@@ -1,0 +1,19 @@
+﻿
+@model Cotoso_Craft_Like_Web.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    Model.OnGet();
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h1>@Model.Str</h1>
+@foreach (var product in Model.Products)
+{
+    <div class="card-group" style="background-image:url(@product.Image)">
+        <h2>@product.Id</h2>
+    </div>
+} 

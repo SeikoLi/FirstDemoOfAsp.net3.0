@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Cotoso_Craft_Like_Web.Models
+@using Cotoso_Craft_Like_Web.Services
+@inject ProductServices productService
+
+
+@foreach (var product in productService.GetProducts())
+{
+    <div class="card-group" style="background-image:url(@product.Image)">
+        <h2>@product.Id</h2>
+
+    </div>
+    <div class="card-footer">
+        <small class=" text-muted">
+
+            <button @onclick="(e=>SelectProduct(product.Id))" data-toggle="model" data-target="#productModel" class="btn btn-primary">
+                More Info
+
+            </button>
+        </small>
+    </div>
+
+}
+
+
+
+@code {
+    string selectedProductId;
+    Product selectedProduct = new Product();
+    void SelectProduct(string productId)
+    {
+        selectedProductId = productId;
+        selectedProduct = productService.GetProducts().First(x => x.Id == productId);
+         
+    }
+}
+
+
